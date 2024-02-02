@@ -60,8 +60,6 @@ Projeyi aşağıdaki komutlarla kullanabilirsiniz:
     node index.js transfer <alıcı_public_key> <miktar>
     ```
 
-## Katkıda Bulunma
 
-Projeye katkıda bulunmak isterseniz, lütfen bir pull request açın veya sorunları bildirin.
 
 
