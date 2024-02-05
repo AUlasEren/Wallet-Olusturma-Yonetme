@@ -8,6 +8,8 @@ Bu proje, Solana blockchain üzerinde basit cüzdan işlemleri gerçekleştirmek
 - **Airdrop Alma:** Belirtilen cüzdana belirli bir miktar SOL airdrop alabilirsiniz.
 - **Bakiye Kontrolü:** Belirtilen cüzdanın bakiyesini kontrol edebilirsiniz.
 - **Transfer İşlemi:** Belirli bir miktarda SOL'u bir cüzdandan diğerine transfer edebilirsiniz.
+- **Ağ İstatisklerini Görüntüleyebilirsiniz:** Ağ istatistkilerini görüntülebilirsiniz. 
+- **Cüzdanları Görüntüleme:** Kaydedilen cüzdanları liste şeklinde görüntüleyebilirsiniz.
 
 ## Kurulum
 
