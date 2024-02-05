@@ -33,7 +33,7 @@ Projeyi aşağıdaki komutlarla kullanabilirsiniz:
 - **Yeni Cüzdan Oluşturma:**
 
     ```
-    node index.js new
+    node index.js new [CÜZDAN_AD]
     ```
 
 - **Airdrop Alma (Varsayılan olarak 1 SOL):**
@@ -45,20 +45,31 @@ Projeyi aşağıdaki komutlarla kullanabilirsiniz:
     Belirli bir miktar airdrop almak için:
 
     ```
-    node index.js airdrop <miktar>
+    node index.js airdrop [CÜZDAN_AD] [AIRDROP_MIKTARI]
     ```
 
 - **Bakiye Kontrolü:**
 
     ```
-    node index.js balance
+    node index.js balance [CÜZDAN_AD]
     ```
 
 - **Transfer İşlemi (receiverPublicKey ve miktarı belirtin):**
 
     ```
-    node index.js transfer <alıcı_public_key> <miktar>
+    node index.js transfer [GÖNDEREN_CÜZDAN_AD] [ALICI_CÜZDAN_PUBLIC_KEY] [TRANSFER_MIKTARI]
     ```
+- **Ağ istatistiklerini görüntülemek için:**
+    ```
+    node index.js stats
+
+     ```
+- **Kayıtlı cüzdanları listelemek için:**
+    ```
+    node index.js lists
+
+     ```
+
 
 
 
