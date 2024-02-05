@@ -1,5 +1,5 @@
-const solanaWeb3 = require('@solana/web3.js');
 const fs = require('fs');
+const solanaWeb3 = require('@solana/web3.js');
 
 class WalletManager {
     constructor() {
@@ -25,7 +25,7 @@ class WalletManager {
         }
     }
 
-    async createWallet(walletName) {
+    createWallet(walletName) {
         if (this.wallets[walletName]) {
             console.error('Bu isimde bir cüzdan zaten var.');
             return;

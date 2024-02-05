@@ -8,9 +8,11 @@ const walletManager = new WalletManager(wallets, connection);
 
 async function main() {
     const args = process.argv.slice(2);  // Komut satırı argümanlarını al
-    switch (args[0]) {
+    const command = args[0];
+
+    switch (command) {
         case 'new':
-            const newWalletName = args[1]; // Kullanıcıdan cüzdan adını al
+            const newWalletName = args[1];
             if (!newWalletName) {
                 console.log('Lütfen bir cüzdan adı belirtin.');
                 break;
@@ -23,25 +25,28 @@ async function main() {
             console.log(`${newWalletName} adlı yeni cüzdan oluşturuldu:`, newWallet);
             break;
         case 'balance':
-            // Balance kontrolü için cüzdan adı gerekli
             const balanceWalletName = args[1];
-            if (!wallets[balanceWalletName]) {
-                console.log('Belirtilen cüzdan bulunamadı.');
+            if (!balanceWalletName) {
+                console.log('Lütfen bir cüzdan adı belirtin.');
                 break;
             }
             const balance = await walletManager.checkBalance(balanceWalletName);
-            console.log('Cüzdan bakiyesi:', balance, 'SOL');
+            if (balance !== undefined) {
+                console.log('Cüzdan bakiyesi:', balance, 'SOL');
+            }
             break;
         case 'transfer':
             const transferWalletName = args[1];
             const receiverPublicKey = args[2];
             const transferAmount = parseFloat(args[3]);
-            if (!wallets[transferWalletName]) {
-                console.log('Belirtilen cüzdan bulunamadı.');
+            if (!transferWalletName || !receiverPublicKey || isNaN(transferAmount)) {
+                console.log('Geçersiz transfer bilgileri.');
                 break;
             }
             const signature = await walletManager.transfer(transferWalletName, receiverPublicKey, transferAmount);
-            console.log('Transfer işlemi tamamlandı. İşlem imzası:', signature);
+            if (signature) {
+                console.log('Transfer işlemi tamamlandı. İşlem imzası:', signature);
+            }
             break;
         case 'stats':
             try {
@@ -53,22 +58,24 @@ async function main() {
             break;
         case 'switch':
             const switchWalletName = args[1];
-            if (wallets[switchWalletName]) {
-                walletManager.switchWallet(switchWalletName);
+            if (!switchWalletName) {
+                console.log('Lütfen bir cüzdan adı belirtin.');
+                break;
+            }
+            if (walletManager.switchWallet(switchWalletName)) {
                 console.log(`Cüzdana geçiş yapıldı: ${switchWalletName}`);
-                // Burada seçili cüzdanla işlemleri yapabilirsiniz.
             } else {
                 console.log('Belirtilen cüzdan bulunamadı.');
             }
             break;
         case 'list':
-            console.log('Kayıtlı cüzdanlar:', walletManager.listWallets());
+            walletManager.listWallets();
             break;
         case 'airdrop':
             const airdropWalletName = args[1];
-            const airdropAmount = args[2] ? parseFloat(args[2]) : 1;  // Eğer miktar belirtilmemişse varsayılan olarak 1 SOL
-            if (!wallets[airdropWalletName]) {
-                console.log('Belirtilen cüzdan bulunamadı.');
+            const airdropAmount = args[2] ? parseFloat(args[2]) : 1;
+            if (!airdropWalletName) {
+                console.log('Lütfen bir cüzdan adı belirtin.');
                 break;
             }
             try {
