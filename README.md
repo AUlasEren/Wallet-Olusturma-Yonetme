@@ -59,8 +59,6 @@ Projeyi aşağıdaki komutlarla kullanabilirsiniz:
     ```
     node index.js transfer <alıcı_public_key> <miktar>
     ```
-
-     ```
 - **Kayıtlı cüzdanları listelemek için:**
     ```
     node index.js lists
