@@ -57,10 +57,16 @@ Projeyi aşağıdaki komutlarla kullanabilirsiniz:
 - **Transfer İşlemi (receiverPublicKey ve miktarı belirtin):**
 
     ```
-    node index.js transfer <alıcı_public_key> <miktar>
+    node index.js transfer [GÖNDEREN_CÜZDAN_AD] [ALICI_CÜZDAN_PUBLIC_KEY] [TRANSFER_MIKTARI]
     ```
 - **Kayıtlı cüzdanları listelemek için:**
     ```
     node index.js lists
 
      ```
+- **Ağ istatistiklerini görüntülemek için:**
+    ```
+    node index.js stats
+
+     ```
+    
